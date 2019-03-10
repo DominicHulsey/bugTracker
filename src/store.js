@@ -17,10 +17,6 @@ export default new Vuex.Store({
   },
   mutations: {
     setBugs(state, data) {
-      let timeFormatted = data.map(bug => {
-        return moment(bug.createdAt).format('hh:mm a, MMMM YYYY')
-      })
-      console.log(timeFormatted)
       state.bugs = data
     },
     addBug(state, data) {
@@ -75,6 +71,25 @@ export default new Vuex.Store({
     },
     setId({ commit, dispatch }, payload) {
       commit('setActive', payload)
+    },
+    filterBug({ commit, dispatch }, payload) {
+      _bugApi.get('')
+        .then(res => {
+          let filtered = res.data.results.filter(bug => {
+            return bug.closed == payload
+          })
+          commit('setBugs', filtered)
+        })
+    },
+    filterCreator({ commit, dispatch }, payload) {
+      console.log(payload)
+      _bugApi.get('')
+        .then(res => {
+          let filtered = res.data.results.filter(bug => {
+            return bug.creator.toLowerCase() == payload.toLowerCase()
+          })
+          commit('setBugs', filtered)
+        })
     }
   }
 })

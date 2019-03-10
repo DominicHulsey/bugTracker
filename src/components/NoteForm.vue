@@ -10,20 +10,18 @@
 
 <template>
   <div class="noteForm">
-    <div v-if="!bugStatus.closed">
+    <!-- <div v-if="!bugStatus.closed">
       <form @submit.prevent='createNote'>
         <input v-model="noteForm.creator" type="text" placeholder="Enter note creator" />
         <input v-model="noteForm.content" type="text" placeholder="Enter note" />
-        <b-dropdown v-model="noteForm.flagged">
-          <b-dropdown-item value="pending">pending</b-dropdown-item>
-          <b-dropdown-item value="completed">completed</b-dropdown-item>
-          <b-dropdown-item value="rejected">rejected</b-dropdown-item>
-        </b-dropdown>
-        <button type="submit">Create
-          Note</button>
+        <div class="b-dropdown' v-model=" noteForm.flagged">
+          <div class="b-dropdown-item' value=" pending">pending</div>
+          <div class="b-dropdown-item' value=" completed">completed</div>
+          <div class="b-dropdown-item' value=" rejected">rejected</div>
+        </div>
+        <button type="submit">Create Note</button>
       </form>
-    </div>
-  </div>
+    </div> -->
   </div>
 </template>
 <script>
