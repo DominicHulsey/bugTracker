@@ -1,13 +1,8 @@
-<!-- <div class="col-4" :class="{'inactive-song': !activeSong.trackName}">
-  <main-song :class="{'active-song': activeSong.trackName}" v-if='activeSong.trackName' :song='activeSong'>
-  </main-song>
-</div> -->
-
 <template>
   <div class="home">
     <div class="container">
       <img class="mb-5" alt="Vue logo" src="../assets/logo.png">
-      <Bug-Form></Bug-Form>
+      <bug-form></bug-form>
       <div class="row d-flex justify-content-center">
         <div class="col-6 mt-4 pb-4">
           <div :class="{'openBG': !bug.closed}" class="mt-3 text-left card p-3" v-for="bug in bugs" id="bugs">
@@ -21,16 +16,12 @@
     </div>
   </div>
 </template>
+
 <script>
   // @ is an alias to /src
   import BugForm from '@/components/BugForm'
   export default {
     name: 'home',
-    data() {
-      return {
-
-      }
-    },
     components: {
       BugForm
     },

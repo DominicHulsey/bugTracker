@@ -1,27 +1,22 @@
 <template>
   <div class="Details View">
     <h1><u>Bug Details:</u></h1>
-    <bug-details></bug-details>
+    <bug-data />
     <note-form></note-form>
-    <div class="row">
-      <!-- <div class="col-2 card" v-for="note in notes">
-        <h1>{{note.creator}}</h1>
-        <h1>{{note.content}}</h1> -->
-    </div>
-  </div>
+    <note-data></note-data>
   </div>
 </template>
 
 <script>
-  import BugDetails from "@/components/bugDetails"
+  import BugData from "@/components/bugData"
   import NoteForm from "@/components/NoteForm"
+  import NoteData from '@/components/noteData'
   export default {
-    name: 'Details',
+    name: 'BugDetails',
     mounted() {
       let id = this.$route.params.id
       this.$store.dispatch('setId', id)
-    },
-    data() {
+      this.$store.dispatch('getNotes')
     },
     computed: {
       notes() {
@@ -32,13 +27,14 @@
 
     },
     components: {
-      BugDetails,
-      NoteForm
+      BugData,
+      NoteForm,
+      NoteData
     }
   }
 </script>
 
 
-<style scoped>
+<style>
 
 </style>

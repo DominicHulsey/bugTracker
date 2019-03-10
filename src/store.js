@@ -5,7 +5,7 @@ import Axios from 'axios'
 Vue.use(Vuex)
 
 let _bugApi = Axios.create({
-  baseURL: 'https://bcw-sandbox.herokuapp.com/api/Dom2/bugs/'
+  baseURL: 'https://bcw-sandbox.herokuapp.com/api/Dom5/bugs/'
 })
 
 export default new Vuex.Store({
@@ -26,31 +26,29 @@ export default new Vuex.Store({
     },
     setNotes(state, data) {
       state.notes = data
-    }
+    },
   },
   actions: {
     createBug({ commit, dispatch }, payload) {
       _bugApi.post('', payload)
         .then(res => {
-          console.log(res.data.results)
           commit('addBug', res.data.results)
+          dispatch('getBugs')
         })
     },
     getBugs({ commit, dispatch }) {
       _bugApi.get('')
         .then(res => {
           commit('setBugs', res.data.results)
-          console.log(res.data.results)
         })
     },
     setActiveBug({ commit, dispatch }, payload) {
       commit('setActive', payload)
     },
-    changeStatus({ commit, dispatch }, payload) {
-      console.log(payload)
-      _bugApi.delete('' + payload)
+    changeStatus({ commit, dispatch }) {
+      let id = this.state.activeBug
+      _bugApi.delete('' + id)
         .then(res => {
-          dispatch('getBugs')
         })
     },
     createNote({ commit, dispatch }, payload) {
@@ -58,13 +56,14 @@ export default new Vuex.Store({
       _bugApi.post(id + '/notes', payload)
         .then(res => {
           dispatch('getNotes')
+          console.log(res.data.results)
         })
     },
     getNotes({ commit, dispatch }) {
       let id = this.state.activeBug
       _bugApi.get(id + '/notes')
         .then(res => {
-          commit('setNotes', res.data.data)
+          commit('setNotes', res.data.results)
         })
     },
     setId({ commit, dispatch }, payload) {
