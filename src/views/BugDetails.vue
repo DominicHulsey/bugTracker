@@ -2,8 +2,8 @@
   <div class="Details View">
     <h1><u>Bug Details:</u></h1>
     <bug-data />
-    <note-form></note-form>
-    <note-data></note-data>
+    <note-form />
+    <note-data />
   </div>
 </template>
 

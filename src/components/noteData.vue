@@ -1,26 +1,29 @@
 <template>
   <div class="NoteData">
-    <h1>sup homie</h1>
-    <div v-for="note in notes">
-      <div class="card text-dark">
-        <div class="card-title">
+    <div class="row" v-for="note in notes">
+      <div class=" m-2 card text-dark">
+        <h5 class="card-title">
           {{note.creator}}
-        </div>
-        <div class="card-body">
+        </h5>
+        <h5 class="card-body">
           {{note.content}}
-        </div>
+        </h5>
+        {{note.flagged}}
       </div>
     </div>
+  </div>
   </div>
 </template>
 
 
 <script>
   export default {
-    name: 'NoteData',
+    name: 'noteData',
     computed: {
       notes() {
-        return this.$store.state.notes.filter(note => note.bug == this.$route.params.id)
+        return this.$store.state.notes.filter(note => {
+          return note.bug == this.$route.params.id
+        })
       }
     },
     methods: {

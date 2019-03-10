@@ -1,19 +1,38 @@
 <template>
   <div class="home">
     <div class="container">
-      <img class="mb-5" alt="Vue logo" src="../assets/logo.png">
+      <!-- <img class="mb-5 vueLogo" alt="Vue logo" src="../assets/logo.png"> -->
+      <h1 class="mb-4"><u><i>Bug Squasher</i></u></h1>
       <bug-form></bug-form>
       <div class="row d-flex justify-content-center">
-        <div class="col-6 mt-4 pb-4">
-          <div :class="{'openBG': !bug.closed}" class="mt-3 text-left card p-3" v-for="bug in bugs" id="bugs">
-            <router-link class="text-dark" :to="'/BugDetails/'+bug._id">
-              <b>{{bug.creator}}</b><br>
-              <b>Title: </b>{{bug.title}}
-            </router-link>
-          </div>
-        </div>
+        <table class="table mt-4 pb-4 border border-dark">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Bug Creator</th>
+              <th scope="col">Bug Title</th>
+              <th scope="col">Bug Status</th>
+              <th scope="col">Time Created</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr :class="{'openBG': !bug.closed}" v-for="(bug, index) in bugs" id="bugs">
+              <!-- <router-link class="text-dark" :to="'/BugDetails/'+bug._id"> -->
+              <th scope="row">{{index + 1}}</th>
+              <td>{{bug.creator}}</td>
+              <td>{{bug.title}}</td>
+              <td v-if="!bug.closed">Open</td>
+              <td v-else>Closed</td>
+              <!-- </router-link> -->
+            </tr>
+          </tbody>
+        </table>
       </div>
+
     </div>
+  </div>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -31,7 +50,7 @@
       }
     },
     methods: {
-    }
+    },
   }
 </script>
 <style>
@@ -50,5 +69,10 @@
 
   a:hover {
     text-decoration: none
+  }
+
+  .vueLogo {
+    max-height: 50px;
+    width: auto;
   }
 </style>

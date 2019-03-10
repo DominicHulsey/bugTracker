@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
+      <router-link class="bg-light p-2 text-dark" to="/">Home</router-link>
     </div>
     <router-view />
   </div>
@@ -13,6 +13,7 @@
     }
   }
 </script>
+
 <style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -7,12 +7,11 @@
           <h2 class="card p-2" id="bugs"><b>Bug title:</b> {{findBug.title}}</h2>
           <h3 class="card p-2" id="bugs"><b>Bug description:</b> {{findBug.description}}</h3>
           </ul>
-          <button :class="{'openBG': !findBug.closed}" v-if="findBug.closed" @click="statusChange(findBug._id)">Close
+          <button :class="{'openBG': findBug.closed}" v-if="!findBug.closed" @click="statusChange(findBug._id)">Close
             bug</button>
         </div>
       </div>
     </div>
-    <button class="bg-secondary col-2 mt-5 rounded">Make Note</button>
   </div>
   </div>
 </template>
