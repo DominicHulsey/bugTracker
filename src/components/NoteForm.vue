@@ -1,27 +1,20 @@
-<!-- <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2">
-  <b-dropdown-item>First Action</b-dropdown-item>
-  <b-dropdown-item>Second Action</b-dropdown-item>
-  <b-dropdown-item>Third Action</b-dropdown-item>
-  <b-dropdown-divider />
-  <b-dropdown-item active>Active action</b-dropdown-item>
-  <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-</b-dropdown> -->
-
-
 <template>
   <div class="noteForm">
-    <!-- <div v-if="!bugStatus.closed">
+    <div v-if="!bugStatus.closed">
       <form @submit.prevent='createNote'>
         <input v-model="noteForm.creator" type="text" placeholder="Enter note creator" />
         <input v-model="noteForm.content" type="text" placeholder="Enter note" />
-        <div class="b-dropdown' v-model=" noteForm.flagged">
-          <div class="b-dropdown-item' value=" pending">pending</div>
-          <div class="b-dropdown-item' value=" completed">completed</div>
-          <div class="b-dropdown-item' value=" rejected">rejected</div>
-        </div>
+        <select v-model="noteForm.flagged">
+          <option disabled value="">Flag form</option>
+          <option>pending</option>
+          <option>completed</option>
+          <option>rejected</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+        </select>
         <button type="submit">Create Note</button>
       </form>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -29,6 +22,11 @@
     name: 'noteForm',
     mounted() {
       this.$store.dispatch('getNotes')
+    },
+    data() {
+      return {
+        noteForm: {}
+      }
     },
     computed: {
       bugStatus() {

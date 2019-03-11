@@ -90,6 +90,13 @@ export default new Vuex.Store({
           })
           commit('setBugs', filtered)
         })
+    },
+    deleteNote({ commit, dispatch }, payload) {
+      let bugID = this.state.activeBug
+      _bugApi.delete('' + bugID + '/notes/' + payload)
+        .then(res => {
+          dispatch('getNotes')
+        })
     }
   }
 })
