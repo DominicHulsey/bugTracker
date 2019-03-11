@@ -1,7 +1,7 @@
 <template>
   <div class="NoteData">
     <div class="row d-flex justify-content-center">
-      <div class="card mt-4 border-0 m-3 text-center noteStyle" v-for="note in notes">
+      <div class="card mt-3 border-0 m-3 text-center noteStyle" v-for="note in notes">
         <img class="card-img noteStyle" src="../assets/post-it.png" />
         <div class="card-img-overlay noteStyle rounded text-dark">
           <h5 class="mt-5 text-left">
@@ -36,7 +36,8 @@
         this.$store.dispatch('deleteNote', id)
       }
     },
-    components: {}
+    components: {
+    }
   }
 </script>
 

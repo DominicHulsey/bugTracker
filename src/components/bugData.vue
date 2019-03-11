@@ -1,6 +1,8 @@
 <template>
   <div class="detailBugs">
     <div class="row d-flex justify-content-center">
+      <img class="closed" v-if="findBug.closed" src="../assets/closed.png" />
+      <note-form></note-form>
       <div class="col-5 bg-light shadow d-flex justify-content-center mt-2 h-100">
         <div class="col-3 align-self-center h-100">
           <img class="align-self-center" src="../assets/Bug.png" id="bugImage" />
@@ -35,6 +37,7 @@
 
 
 <script>
+  import NoteForm from "@/components/NoteForm"
   export default {
     name: 'bugData',
     computed: {
@@ -48,6 +51,7 @@
       }
     },
     components: {
+      NoteForm
     }
   }
 </script>
@@ -72,5 +76,15 @@
 
   #bugTitle {
     background-color: #dedede
+  }
+
+  .closed {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    z-index: 100;
+    height: 350px;
+    opacity: 0.8;
   }
 </style>

@@ -1,15 +1,15 @@
 <template>
   <div class="Details View">
-    <h1><u>Bug Details:</u></h1>
-    <bug-data />
-    <note-form />
-    <note-data />
+    <div class="container-fluid">
+      <h1><u>Bug Details:</u></h1>
+      <bug-data />
+      <note-data />
+    </div>
   </div>
 </template>
 
 <script>
   import BugData from "@/components/bugData"
-  import NoteForm from "@/components/NoteForm"
   import NoteData from '@/components/noteData'
   export default {
     name: 'BugDetails',
@@ -28,7 +28,6 @@
     },
     components: {
       BugData,
-      NoteForm,
       NoteData
     }
   }

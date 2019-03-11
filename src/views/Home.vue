@@ -18,7 +18,7 @@
               <a class="dropdown-item" @click="remFilters">Remove Filters</a>
             </div>
           </div>
-          <div class="dropdown show mt-4 mx-2">
+          <!-- <div class="dropdown show mt-4 mx-2">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort
@@ -28,7 +28,7 @@
               <a class=" dropdown-item" @click="filterChange(true)">Oldest</a>
               <a class=" dropdown-item" @click="">Reset Sort</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <form @submit.prevent='filterCreator' class="mt-2">
@@ -47,15 +47,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr :class="{'openBG': !bug.closed}" v-for="(bug, index) in bugs" id="bugs" click click>
-              <router-link class="text-dark" :to="'/BugDetails/'+bug._id">
-                <th scope="row">{{index + 1}}</th>
-                <td>{{bug.creator}}</td>
-                <td>{{bug.title}}</td>
-                <td v-if="!bug.closed">Open</td>
-                <td v-else>Closed</td>
-                <td>{{bug.createdAt}}</td>
-              </router-link>
+            <tr :class="{'openBG': !bug.closed}" v-for="(bug, index) in bugs" id="bugs" @click="bugRoute(bug._id)">
+              <!-- <router-link class="text-dark" :to="'/BugDetails/'+bug._id"> -->
+              <th scope="row">{{index + 1}}</th>
+              <td>{{bug.creator}}</td>
+              <td>{{bug.title}}</td>
+              <td v-if="!bug.closed">Open</td>
+              <td v-else>Closed</td>
+              <td>{{bug.createdAt}}</td>
+              <!-- </router-link> -->
             </tr>
           </tbody>
         </table>
@@ -96,6 +96,9 @@
         this.isHidden = false
         console.log(creator)
         this.$store.dispatch('filterCreator', this.creator.creator)
+      },
+      bugRoute(id) {
+        this.$router.push('BugDetails/' + id)
       }
     }
   }
