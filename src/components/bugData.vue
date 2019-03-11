@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center">
       <img class="closed" v-if="findBug.closed" src="../assets/closed.png" />
       <note-form></note-form>
-      <div class="col-5 bg-light shadow d-flex justify-content-center mt-2 h-100">
+      <div class="col-6 bg-light shadow d-flex justify-content-center mt-2 h-100">
         <div class="col-3 align-self-center h-100">
           <h4 v-if="findBug.closed" class="text-dark p-1 bg-success rounded">Closed</h4>
           <h4 v-else class="p-1 bg-danger text-white rounded">Open</h4>
