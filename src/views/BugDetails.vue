@@ -1,7 +1,6 @@
 <template>
   <div class="Details View">
     <div class="container-fluid">
-      <h1><u>Bug Details:</u></h1>
       <bug-data />
       <note-data />
     </div>

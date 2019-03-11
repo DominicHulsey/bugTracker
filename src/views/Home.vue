@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <!-- <img class="mb-5 vueLogo" alt="Vue logo" src="../assets/logo.png"> -->
-      <h1 class="mb-4"><u><i>Bug Squasher</i></u></h1>
+      <h1 class="mb-4"><u><i>Bug Tracker</i></u></h1>
       <bug-form></bug-form>
       <div class="row">
         <div class="col-12 d-flex justify-content-center">

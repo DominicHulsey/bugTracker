@@ -29,7 +29,6 @@ export default new Vuex.Store({
       state.notes = data
     },
   },
-
   actions: {
     createBug({ commit, dispatch }, payload) {
       _bugApi.post('', payload)
@@ -97,6 +96,13 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getNotes')
         })
+    },
+    sortDate({ commit, dispatch }) {
+      let time = this.state.bugs.sort((a, b) => {
+        let time1 = new Date(a.createdAt)
+        let time2 = new Date(b.createdAt)
+        return time1 - time2
+      })
     }
   }
 })
