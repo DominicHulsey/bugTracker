@@ -6,14 +6,15 @@ import moment from 'moment'
 Vue.use(Vuex)
 
 let _bugApi = Axios.create({
-  baseURL: 'https://bcw-sandbox.herokuapp.com/api/Dom10/bugs/'
+  baseURL: 'https://bcw-sandbox.herokuapp.com/api/Dom11/bugs/'
 })
 
 export default new Vuex.Store({
   state: {
     bugs: [],
     activeBug: [],
-    notes: []
+    notes: [],
+    time: []
   },
   mutations: {
     setBugs(state, data) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     setNotes(state, data) {
       state.notes = data
     },
+    setTime(state, data) {
+      state.time = data
+    }
   },
   actions: {
     createBug({ commit, dispatch }, payload) {
@@ -40,7 +44,11 @@ export default new Vuex.Store({
     getBugs({ commit, dispatch }) {
       _bugApi.get('')
         .then(res => {
+          let formatTime = res.data.results.map(bug => {
+            return moment(bug.createdAt).format('hh:mm, MMMM, YYYY')
+          })
           commit('setBugs', res.data.results)
+          commit('setTime', formatTime)
         })
     },
     setActiveBug({ commit, dispatch }, payload) {
@@ -65,7 +73,6 @@ export default new Vuex.Store({
       _bugApi.get(id + '/notes')
         .then(res => {
           commit('setNotes', res.data.results)
-          console.log(res.data.results)
         })
     },
     setId({ commit, dispatch }, payload) {
@@ -81,7 +88,6 @@ export default new Vuex.Store({
         })
     },
     filterCreator({ commit, dispatch }, payload) {
-      console.log(payload)
       _bugApi.get('')
         .then(res => {
           let filtered = res.data.results.filter(bug => {
@@ -97,12 +103,5 @@ export default new Vuex.Store({
           dispatch('getNotes')
         })
     },
-    sortDate({ commit, dispatch }) {
-      let time = this.state.bugs.sort((a, b) => {
-        let time1 = new Date(a.createdAt)
-        let time2 = new Date(b.createdAt)
-        return time1 - time2
-      })
-    }
   }
 })

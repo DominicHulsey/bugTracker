@@ -7,8 +7,7 @@
           <form @submit.prevent='createNote'>
             <input class="rounded my-2" v-model="noteForm.creator" type="text" placeholder="Enter note creator" />
             <input class="rounded my-2" v-model="noteForm.content" type="text" placeholder="Enter note" />
-            <select class="my-2" v-model=" noteForm.flagged">
-              <option value="" disabled selected>flag form</option>
+            flag: <select class="my-2" v-model=" noteForm.flagged">
               <option>pending</option>
               <option>completed</option>
               <option>rejected</option>

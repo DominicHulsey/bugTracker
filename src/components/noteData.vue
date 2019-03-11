@@ -5,7 +5,7 @@
         <img class="card-img noteStyle" src="../assets/post-it.png" />
         <div class="card-img-overlay noteStyle rounded text-dark">
           <h5 class="mt-5 text-left">
-            <b>Creator: </b> {{note.creator}}
+            <b>Author: </b> {{note.creator}}
           </h5>
           <h5 class="mt-3 text-left">
             <b>Note: </b> {{note.content}}

@@ -54,7 +54,7 @@
               <td>{{bug.title}}</td>
               <td v-if="!bug.closed">Open</td>
               <td v-else>Closed</td>
-              <td>{{bug.createdAt}}</td>
+              <td>{{time[index]}}</td>
               <!-- </router-link> -->
             </tr>
           </tbody>
@@ -82,11 +82,17 @@
       bugs() {
         return this.$store.state.bugs
       },
+      time() {
+        return this.$store.state.time
+      }
     },
     methods: {
       filterChange(status) {
         this.isHidden = false
         this.$store.dispatch('filterBug', status)
+      },
+      formatTime() {
+
       },
       remFilters() {
         this.isHidden = false

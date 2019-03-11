@@ -26,6 +26,7 @@
     methods: {
       createBug() {
         this.$store.dispatch('createBug', this.bugForm)
+        bugForm.reset()
       }
     },
     components: {}

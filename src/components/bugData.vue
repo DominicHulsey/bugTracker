@@ -16,17 +16,17 @@
         <div class="p-5">
           <div class="row">
             <h5 class="p-2" id="bugTitle"><b>Creator:</b></h5>
-            <h5 class="p-2 px-5 bg-white rounded align-self-center">{{findBug.creator}}</h5>
+            <h5 class="p-2 px-2 bg-white rounded align-self-center">{{findBug.creator}}</h5>
             <hr>
             <h5 class="p-2" id="bugTitle"><b>Title:</b></h5>
-            <h5 class="p-2 px-5 bg-white rounded align-self-center">{{findBug.title}}</h5>
+            <h5 class="p-2 px-2 bg-white rounded align-self-center">{{findBug.title}}</h5>
           </div>
           <hr>
           <div class="row">
             <h6 class="p-2 align-self-center" id="bugTitle"><b>Description:</b></h6>
             <textarea readonly class="col-8 py-4 border-0 ml-3 bg-white">{{findBug.description}}</textarea>
           </div>
-
+          <p class="text-muted mt-3">{{formatTime(findBug._id)}}</p>
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@
 
 <script>
   import NoteForm from "@/components/NoteForm"
+  import moment from "moment"
   export default {
     name: 'bugData',
     computed: {
@@ -47,6 +48,10 @@
     methods: {
       statusChange() {
         this.$store.dispatch('changeStatus')
+      },
+      formatTime(id) {
+        let bug = this.$store.state.bugs.find(bug => bug._id == id)
+        return moment(bug.createdAt).format('hh:mm MMMM, YYYY')
       }
     },
     components: {
@@ -81,8 +86,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    position: fixed;
-    background-attachment: local;
+    position: absolute;
     z-index: 100;
     height: 350px;
     opacity: 0.8;
